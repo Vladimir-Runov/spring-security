@@ -1,6 +1,11 @@
 package ru.gb.runov.springsecurity.model.entities;
 
 import lombok.Data;
+
+import javax.persistence.*;
+import java.util.Collection;
+
+import lombok.Data;
 import org.springframework.context.annotation.Profile;
 
 import javax.persistence.*;
@@ -8,8 +13,8 @@ import java.util.Collection;
 
 @Entity
 @Data
-@Table(name = "users")
-public class DbUser {
+@Table(name = "usersdao")
+public class DaoUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

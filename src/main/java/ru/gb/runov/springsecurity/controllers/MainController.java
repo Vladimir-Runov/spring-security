@@ -13,7 +13,7 @@ import java.security.Principal;
 public class MainController {
     @GetMapping("/")
     public String homePage() {
-        return "home";
+        return "home (main controller)";
     }
 
     @GetMapping("/unsecured")
@@ -23,11 +23,11 @@ public class MainController {
 
     @GetMapping("/auth_page")
     public String authenticatedPage() {
-        return "authenticated";
+        return "authenticated (MC)";
     }
 
     @GetMapping("/admin")
     public String adminPage() {
-        return "admin";
+        return "admin (main controller)";
     }
 }

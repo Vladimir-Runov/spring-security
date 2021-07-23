@@ -1,6 +1,7 @@
 package ru.gb.runov.springsecurity.configs;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import ru.gb.runov.springsecurity.services.DaoUserService;
 import ru.gb.runov.springsecurity.services.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-  @EnableGlobalMethodSecurity(securedEnabled = true)
-//@EnableGlobalMethodSecurity(securedEnabled = true)
+//  @EnableGlobalMethodSecurity(securedEnabled = true)
+//  @EnableGlobalMethodSecurity(securedEnabled = true)
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
 
 @EnableWebSecurity(debug = true)
@@ -27,13 +28,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class DaoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserService userService;
+    private DaoUserService userService;
 
     private Logger logger = LoggerFactory.getLogger(DaoSecurityConfig.class.getName());
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        logger.info("Dao Authentication Provider");
+        logger.info("++++++Dao   configure",http);
         http.authorizeRequests()
                 .antMatchers("/authenticated/**").authenticated()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN", "SUPERADMIN") // ROLE_ADMIN, ROLE_SUPERADMIN
@@ -49,6 +50,7 @@ public class DaoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
+        logger.info("++++++Dao   daoAuthenticationProvider");
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         authenticationProvider.setUserDetailsService(userService);

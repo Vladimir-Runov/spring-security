@@ -16,6 +16,6 @@ jpa:
     current_session_context_class:thread
 spring.jpa:
   database: POSTGRESQL
-  hibernate.ddl-auto: create-drop
+  hibernate.ddl-auto: 
   show-sql: true
 
