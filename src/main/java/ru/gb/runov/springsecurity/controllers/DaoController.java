@@ -42,7 +42,6 @@ public class DaoController {
         return "authenticated: " + user.getUsername() + " Scope: " + user.getScope();
     }
     /*
-
 			GET .../app/score/inc - увеличивает балл текущего пользователя
 			GET .../app/score/dec - уменьшает балл текущего пользователя
 			GET .../app/score/get/current - показывает балл вошедшего пользователя
